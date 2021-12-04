@@ -21,20 +21,23 @@ namespace Operatii_cu_numere_mari
                 "Introduceti varianta:");
             int varianta = 0;
             while (varianta > 6 || varianta < 1)
+            {
                 try
                 {
                     varianta = int.Parse(Console.ReadLine());
-                    while (varianta > 6 || varianta < 1)
-                    {
                         Console.WriteLine(varianta);
                         Console.WriteLine("Introduceti o valoare dintre cele valide:");
-                    }
                 }
                 catch (System.FormatException)
                 {
+                    Console.WriteLine("Introduceti doar valori numerice din intervalul [1,6].");
 
+                }
+                catch (System.OverflowException)
+                {
                     Console.WriteLine("Introduceti doar valori numerice din intervalul [1,6].");
                 }
+            }
             switch (varianta)
             {
                 case 1: { Adunare.Adunare_Numere();
