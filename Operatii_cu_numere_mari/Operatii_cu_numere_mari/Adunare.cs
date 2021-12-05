@@ -37,7 +37,7 @@ namespace Operatii_cu_numere_mari
         /// </summary>
         /// <param name="primul">Primul sir de caractere.</param>
         /// <param name="al_doilea">Al doilea sir de caractere.</param>
-        private static void Citire_Numere(ref string primul, ref string al_doilea)
+        public static void Citire_Numere(ref string primul, ref string al_doilea)
         {
             Console.Clear();
             Console.WriteLine("Introduceti primul numar:");
@@ -51,7 +51,7 @@ namespace Operatii_cu_numere_mari
         /// </summary>
         /// <param name="a">Vectorul in care dorim stocam numarul.</param>
         /// <param name="b">Variabila de tip string pe care o vom converti in vector de tip int.</param>
-        private static void Convertire(ref int[] a, string b)
+        public static void Convertire(ref int[] a, string b)
         {
             int i = 0;
             while (i < b.Length)

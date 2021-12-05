@@ -25,8 +25,8 @@ namespace Operatii_cu_numere_mari
                 try
                 {
                     varianta = int.Parse(Console.ReadLine());
-                        Console.WriteLine(varianta);
-                        Console.WriteLine("Introduceti o valoare dintre cele valide:");
+                    Console.WriteLine(varianta);
+                    Console.WriteLine("Introduceti o valoare dintre cele valide:");
                 }
                 catch (System.FormatException)
                 {
@@ -40,10 +40,13 @@ namespace Operatii_cu_numere_mari
             }
             switch (varianta)
             {
-                case 1: { Adunare.Adunare_Numere();
-                        break;
-                    }
-                default: 
+                case 1:
+                    Adunare.Adunare_Numere();
+                    break;
+                case 2:
+                    Scadere.Scadere_Numere();
+                    break;
+                default:
                     Console.WriteLine(" ");
                     break;
             }
