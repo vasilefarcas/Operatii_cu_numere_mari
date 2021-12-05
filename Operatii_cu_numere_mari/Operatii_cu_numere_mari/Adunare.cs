@@ -19,13 +19,17 @@ namespace Operatii_cu_numere_mari
             int[] v = new int[primul.Length], a = new int[al_doilea.Length];
             Convertire(ref v, primul);
             Convertire(ref a, al_doilea);
-            AdunareI(v, a);
+            if (primul.Length == al_doilea.Length)
+                Afisare_Rezultat(Adunare_Egale(v, a));
+            else
+                Afisare_Rezultat(Adunare_Inegale3(v, a));
+
         }
 
         private static void Convertire(ref int[] a, string b)
         {
             int i = 0;
-            while(i<b.Length)
+            while (i < b.Length)
             {
                 a[i] = int.Parse(Convert.ToString(b[i]));
                 i++;
@@ -39,6 +43,22 @@ namespace Operatii_cu_numere_mari
             primul = Console.ReadLine();
             Console.WriteLine("Introduceti cel de al doilea numar:");
             al_doilea = Console.ReadLine();
+        }
+
+        private static int[] Adunare_Egale(int[] a, int[] b)
+        {
+            int l = a.Length, i, j;
+            // Adunarea
+            int[] c = new int[l + 2];
+
+            for (i = 0; i < l; i++)
+            {
+                c[i] = c[i] + (a[i] + b[i]) % 10;
+                if (a[i] + b[i] > 9)
+                    c[i + 1]++;
+            }
+            Array.Reverse(c);
+            return c;
         }
 
         private static void Adunarea(string primul, string al_doilea)
@@ -66,7 +86,7 @@ namespace Operatii_cu_numere_mari
                     ok = 1;
                 else
                     ok = 0;
-               // Afisare_Rezultat(rezultat, ok);
+                // Afisare_Rezultat(rezultat, ok);
             }
         }
 
@@ -76,12 +96,13 @@ namespace Operatii_cu_numere_mari
                 Console.Write(v[i]);
         }
 
-        private static void Afisare_Rezultat(char[] v, int ok)
+        private static void Afisare_Rezultat(int[] v)
         {
             Console.WriteLine("Rezultatul este:");
-            if (ok == 1)
-                Console.Write("1");
-            for (int i = 0; i < v.Length; i++)
+            int i = 0;
+            while (v[i] == 0)
+                i++;
+            for (; i < v.Length; i++)
                 Console.Write(v[i]);
         }
         /// <summary>
@@ -124,43 +145,102 @@ namespace Operatii_cu_numere_mari
 
         }
 
-        private static void AdunareI(int[] a, int[] b)
+
+        private static int[] Adunare_Inegale(int[] a, int[] b)
         {
             int l1 = a.Length, l2 = b.Length, i, j, ok = 0, lun = Math.Min(l1, l2);
             // Adunarea
-            char[] c = new char[Math.Max(l1, l2) + 1];
+            int[] c = new int[Math.Max(l1, l2) + 2];
+
             for (i = 0; i < lun; i++)
             {
-                c[i] = Convert.ToChar(((a[i] + b[i]) + ok) % 10);
-                ok = 0;
+                c[i] = c[i] + (a[i] + b[i]) % 10;
                 if (a[i] + b[i] > 9)
-                    ok = 1;
+                    c[i + 1]++;
             }
+
             if (lun == l1)
-                while (i < Math.Max(l1, l2) - 1)
+                while (i < Math.Max(l1, l2))
                 {
-                    c[i] = Convert.ToChar((b[i] + ok) % 10);
+                    c[i] = (b[i] + ok) % 10;
                     i++;
                 }
             else
                 if (lun == l2)
-                while (i < Math.Max(l1, l2) - 1)
+                while (i < Math.Max(l1, l2))
                 {
-                    c[i] = Convert.ToChar((a[i] + ok) % 10);
+                    c[i] = (a[i] + ok) % 10;
                     i++;
                 }
-            Array.Reverse(c);
-            i = 0;
-            if (l1 == l2)
-                ok = 1;
-            else
-                ok = 0;
-            while (Convert.ToInt32(c[i]) == 0)
-                i++;
-            for (; i < c.Length; i++)
-                Console.Write(Convert.ToInt32(c[i]));
-            Afisare_Rezultat(c, ok);
+            return c;
         }
+
+        private static int[] Adunare_Inegale2(int[] a, int[] b)
+        {
+            int l1 = a.Length, l2 = b.Length, i, j;
+            int[] c = new int[Math.Max(l1, l2) + 2];
+            i = 0;
+            if (l1 < l2)
+            {
+                while (l1 + i < l2)
+                {
+                    c[i] = b[i];
+                    i++;
+                }
+                int q;
+                j = Math.Max(l1, l2);
+                for (q = 0; i < j || q < l1; i++, q++)
+                {
+                    c[i] = c[i] + (a[q] + b[i]) % 10;
+                    if (a[q] + b[i] > 9)
+                        c[i + 1]++;
+                }
+
+            }
+            if (l2 < l1)
+            {
+                while (l2 + i < l1)
+                {
+                    c[i] = a[i];
+                    i++;
+                }
+                int q;
+                j = Math.Max(l1, l2);
+                for (q = 0; i < j || q < l2; i++, q++)
+                {
+                    c[i] = c[i] + (a[i] + b[q]) % 10;
+                    if (a[i] + b[q] > 9)
+                        c[i + 1]++;
+                }
+            }
+            return c;
+        }
+
+        private static int[] Adunare_Inegale3(int[] a, int[] b)
+        {
+            int l1 = a.Length, l2 = b.Length, i, j, max = Math.Max(l1, l2) + 1;
+            int[] c = new int[Math.Max(l1, l2) + 2];
+            for (i = l1 - 1, j = l2 - 1; i >= 0 && j >= 0; i--, j--, max--)
+            {
+                c[max] = c[max] + (a[i] + b[j]) % 10;
+                if (a[i] + b[j] > 9)
+                    c[max - 1]++;
+            }
+            while (i >= 0)
+            {
+                c[max] = c[max] + a[i];
+                max--;
+                i--;
+            }
+            while (j >= 0)
+            {
+                c[max] = c[max] + b[j];
+                max--;
+                j--;
+            }
+            return c;
+        }
+
 
     }
 }
