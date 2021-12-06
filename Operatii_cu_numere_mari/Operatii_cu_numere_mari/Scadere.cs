@@ -30,24 +30,36 @@ namespace Operatii_cu_numere_mari
                 Afisare_Rezultat(Scadere_Inegale(v, a));
         }
 
+        /// <summary>
+        /// Metoda care scade doua numere de lungimi diferite si returneaza printr-un vector rezultatul.
+        /// </summary>
+        /// <param name="a">Primul numar sub forma de vector</param>
+        /// <param name="b">Al doilea numar sub forma de vector</param>
+        /// <returns></returns>
         private static int[] Scadere_Inegale(int[] a, int[] b)
         {
             // l1 respectiv l2 stocheaza lungimile vectorilor de numere.
             // max stocheaza lungimea maxima dintre cele doua siruri.
 
-            int l1 = a.Length, l2 = b.Length, i, j, max = Math.Max(l1, l2)-1;
+            int l1 = a.Length, l2 = b.Length, i, j, max = Math.Max(l1, l2) - 1;
             // Declararea noului vector care reprezinta rezultatul final al adunarii, 
             // Acesta are lungimea maximului dintre cele doua plus doua pozitii in cazul
             // in care rezultatul o sa necesite asta
             int[] c = new int[Math.Max(l1, l2)];
+            int k;
             // Pornim cu fiecare vector de la final si adaugam in noul vector creat de la final.
             for (i = l1 - 1, j = l2 - 1; i >= 0 && j >= 0; i--, j--, max--)
             {
                 c[max] = c[max] + (a[i] - b[j] + 10) % 10;
                 // In cazul in care suma celor doua numere de pe pozitia i si j este mai mare decat 9
                 // vom adauga 1 la pozitia urmatoare.
+
                 if (a[i] - b[j] < 0)
+                {
+                    // c[max - 1] = ((c[max - 1] - 1) + 10) % 10;
                     c[max - 1]--;
+                }
+
             }
             // Aici completam din numarul de lungime mai mare partea care nu a fost adaugata in 
             // for-ul anterior
@@ -63,8 +75,17 @@ namespace Operatii_cu_numere_mari
                 max--;
                 j--;
             }
+            // Aici luam pe rand fiecare pozitie iar in cazul in care numarul este mai mic decat 0 vom adauga 10 pentru a fi pozitiv si corect.
+            // Iar daca acesta este negativ inseamna ca pozitia urmatoare o sa fie scazuta cu 1 pentru ca acela este acel 1 pe care "il tinem in minte".
+            for (i = c.Length - 1; i > 0; i--)
+                if (c[i] < 0)
+                {
+                    c[i] = c[i] + 10;
+                    c[i - 1]--;
+                }
             return c;
         }
+
 
         private static int[] Scadere_Egale(int[] a, int[] b)
         {
@@ -93,11 +114,9 @@ namespace Operatii_cu_numere_mari
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
             while (v[i] == 0)
                 i++;
-            if (v[i] <0)
-                Console.Write("-");
             // Afisam vectorul.
             for (; i < v.Length; i++)
-                Console.Write(Math.Abs(v[i]));
+                Console.Write(v[i]);
         }
     }
 }

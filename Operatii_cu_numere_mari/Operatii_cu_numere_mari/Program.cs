@@ -46,6 +46,9 @@ namespace Operatii_cu_numere_mari
                 case 2:
                     Scadere.Scadere_Numere();
                     break;
+                case 3:
+                    Inmultire.Inmultire_Numere();
+                    break;
                 default:
                     Console.WriteLine(" ");
                     break;
