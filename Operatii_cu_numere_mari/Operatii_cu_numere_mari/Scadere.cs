@@ -103,6 +103,7 @@ namespace Operatii_cu_numere_mari
             // Returnam rezultatul.
             return c;
         }
+
         /// <summary>
         /// Metoda care afiseaza rezultatul.
         /// </summary>

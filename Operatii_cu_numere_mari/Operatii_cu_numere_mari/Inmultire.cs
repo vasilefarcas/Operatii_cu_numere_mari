@@ -20,22 +20,19 @@ namespace Operatii_cu_numere_mari
             // Convertesc sirurile de caractere in tip int
             Adunare.Convertire(ref v, primul);
             Adunare.Convertire(ref a, al_doilea);
-            // Vom aborda diferit adunarea in cazul in care sirurile de numere au 
-            // dimensiuni diferite
-            if (primul.Length == al_doilea.Length)
-                Afisare_Rezultat(Inmultire_Egale2(v, a));
-            else
-                Afisare_Rezultat(Inmultire_Inegale(v, a));
+            int z = Math.Max(Numarare_Zerouri_Final(v), Numarare_Zerouri_Final(a));
+            Afisare_Rezultat(Inmultire_Numere(v, a), z);
         }
 
         /// <summary>
         /// Metoda care afiseaza rezultatul.
         /// </summary>
         /// <param name="v">Vectorul pe care il vom afisa ca rezultat.</param>
-        private static void Afisare_Rezultat(int[] v)
+        private static void Afisare_Rezultat(int[] v, int z)
         {
             Console.WriteLine("Rezultatul este:");
             int i = 0;
+            Array.Reverse(v);
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
             while (v[i] == 0)
                 i++;
@@ -44,56 +41,58 @@ namespace Operatii_cu_numere_mari
             // Afisam vectorul.
             for (; i < v.Length; i++)
                 Console.Write(Math.Abs(v[i]));
-        }
-
-        private static int[] Inmultire_Egale(int[] a, int[] b)
-        {
-            // l reprezinta lungimea numerelor.
-            int l = a.Length, i;
-            // Vectorul c in care vom stoca rezultatul.
-            int[] c = new int[2 * l];
-
-            for (i = 0; i < l; i++)
+            // In cazul in care vreunul din numere are valoarea 0 la final vom afisa cate valori de 0 e nevoie.
+            while (z != 0)
             {
-
-                c[i] = c[i] + (a[i] * b[i]) % 10;
-                if (a[i] + b[i] > 9)
-                    c[i + 1] += (a[i] * b[i]) / 10;
+                Console.Write("0");
+                z--;
             }
-            // Inversam vectorul c pentru ca rezultatul sa fie corect afisat.
-            Array.Reverse(c);
-            // Returnam rezultatul.
-            return c;
         }
 
-        private static int[] Inmultire_Egale2(int[] a, int[] b)
+        /// <summary>
+        /// Metoda care calculeaza intr-un al treilea vector produsul celor doua numere transmise ca vector.
+        /// </summary>
+        /// <param name="v">Primul vector care reprezintaa primul numar.</param>
+        /// <param name="a">Al doilea vector care reprezintaa al doilea numar.</param>
+        /// <returns></returns>
+        private static int[] Inmultire_Numere(int[] v, int[] a)
         {
-            // l reprezinta lungimea numerelor.
-            int l = a.Length, i, j;
-            // Vectorul c in care vom stoca rezultatul.
-            int[] c = new int[2 * l];
-            int k = 0;
-            for (i = 0; i < l; i++)
+            int i, j, k = 0, l1 = v.Length, l2 = a.Length;
+            int[] c = new int[Math.Max(l1, l2) * 2];
+            for (i = 0; i < l1; i++)
             {
-                for (j = 0; j < l; j++)
+                for (j = 0; j < l2; j++)
                 {
-                    c[i + k] = c[i + k] + (a[i] * b[j]) % 10;
-                    if (a[i] + b[j] > 9)
-                        c[i + 1 + k] = c[i + 1 + k] + (a[i] * b[j]) / 10;
+                    c[j + k] = c[j + k] + (v[i] * a[j]);
                 }
                 k++;
             }
-            // Inversam vectorul c pentru ca rezultatul sa fie corect afisat.
-            Array.Reverse(c);
-            // Returnam rezultatul.
+            // Parcurgem din nou vectorul rezultat, iar in cazul in care valoarea este mai mare decat 9 vom adauga
+            // pe pozitia urmatoare valoarea pe care "o tinem in minte".
+            for (i = 0; i < c.Length; i++)
+                if (c[i] > 9)
+                {
+                    c[i + 1] = c[i + 1] + c[i] / 10;
+                    c[i] %= 10;
+                }
             return c;
         }
 
-        private static int[] Inmultire_Inegale(int[] v, int[] a)
+        /// <summary>
+        /// Metoda care numara cate valori 0 avem la finalul unui vector.
+        /// </summary>
+        /// <param name="v">Vectorul in care vom numara valorile de 0 de la final.</param>
+        /// <returns></returns>
+        private static int Numarare_Zerouri_Final(int[] v)
         {
-            int lun = 1;
-            int[] c = new int[lun];
-            return c;
+            int i = v.Length - 1, nr = 0;
+            for (; i > 0; i--)
+                if (v[i] == 0)
+                    nr++;
+                else
+                    return nr;
+            return nr;
+
         }
     }
 }
