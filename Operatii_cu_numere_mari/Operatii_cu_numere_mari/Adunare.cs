@@ -25,9 +25,11 @@ namespace Operatii_cu_numere_mari
             Convertire(ref a, al_doilea);
             // Vom aborda diferit adunarea in cazul in care sirurile de numere au 
             // dimensiuni diferite
-            int z = Math.Max(Inmultire.Numarare_Zerouri_Final(v), Inmultire.Numarare_Zerouri_Final(a));
             if (primul.Length == al_doilea.Length)
-                Afisare_Rezultat_Egale(Adunare_Egale(v, a),z);
+            {
+                int z1 = Inmultire.Numarare_Zerouri_Final(v), z2 = Inmultire.Numarare_Zerouri_Final(a);
+                Afisare_Rezultat_Egale(Adunare_Egale(v, a), z1, z2);
+            }
             else
                 Afisare_Rezultat_Inegale(Adunare_Inegale(v, a));
 
@@ -46,7 +48,7 @@ namespace Operatii_cu_numere_mari
             Console.WriteLine("Introduceti cel de al doilea numar:");
             al_doilea = Console.ReadLine();
         }
-        
+
         /// <summary>
         /// Metoda care converteste un sir de caractere in vector de tipul int. 
         /// </summary>
@@ -61,7 +63,7 @@ namespace Operatii_cu_numere_mari
                 i++;
             }
         }
-        
+
         /// <summary>
         /// Metoda care aduna doua numere de lungimi egale si returneaza printr-un vector rezultatul. 
         /// </summary>
@@ -88,26 +90,33 @@ namespace Operatii_cu_numere_mari
         }
 
         /// <summary>
-        /// Metoda care afiseaza rezultatul.
+        /// Metoda care afiseaza rezultatul in cazul in care numerele sunt de aceeasi lungime.
         /// </summary>
-        /// <param name="v">Vectorul pe care il vom afisa ca rezultat.</param>
-        private static void Afisare_Rezultat_Egale(int[] v, int z)
+        /// <param name="v">Vectorul pe care il vom afisa.</param>
+        /// <param name="z">Numarul de zerouri de la final</param>
+        private static void Afisare_Rezultat_Egale(int[] v, int z1, int z2)
         {
             Console.WriteLine("Rezultatul este:");
-            int i = 0;
+            int i = 0, k = 0;
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
-            while (v[i] == 0)
-                i++;
+            while (v[k] == 0)
+                k++;
+            Array.Reverse(v);
             // Afisam vectorul.
-            for (; i < v.Length; i++)
+            for (i = 0; i < v.Length - k; i++)
                 Console.Write(v[i]);
-            while (z > 0)
+            while (z1 > 0 && z2 > 0)
             {
                 Console.Write('0');
-                z--;
+                z1--;
+                z2--;
             }
         }
 
+        /// <summary>
+        /// Metoda care afiseaza rezultatul.
+        /// </summary>
+        /// <param name="v">Vectorul pe care il vom afisa ca rezultat.</param>
         private static void Afisare_Rezultat_Inegale(int[] v)
         {
             Console.WriteLine("Rezultatul este:");
