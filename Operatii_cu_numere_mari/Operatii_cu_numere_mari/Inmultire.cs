@@ -20,7 +20,7 @@ namespace Operatii_cu_numere_mari
             // Convertesc sirurile de caractere in tip int
             Adunare.Convertire(ref v, primul);
             Adunare.Convertire(ref a, al_doilea);
-            int z = Math.Max(Numarare_Zerouri_Final(v), Numarare_Zerouri_Final(a));
+            int z = Numarare_Zerouri_Final(v)+Numarare_Zerouri_Final(a);
             Afisare_Rezultat(Inmultire_Numere(v, a), z);
         }
 
