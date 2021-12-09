@@ -25,10 +25,11 @@ namespace Operatii_cu_numere_mari
             Convertire(ref a, al_doilea);
             // Vom aborda diferit adunarea in cazul in care sirurile de numere au 
             // dimensiuni diferite
+            int z = Math.Max(Inmultire.Numarare_Zerouri_Final(v), Inmultire.Numarare_Zerouri_Final(a));
             if (primul.Length == al_doilea.Length)
-                Afisare_Rezultat(Adunare_Egale(v, a));
+                Afisare_Rezultat_Egale(Adunare_Egale(v, a),z);
             else
-                Afisare_Rezultat(Adunare_Inegale(v, a));
+                Afisare_Rezultat_Inegale(Adunare_Inegale(v, a));
 
         }
 
@@ -85,12 +86,29 @@ namespace Operatii_cu_numere_mari
             // Returnam rezultatul.
             return c;
         }
-        
+
         /// <summary>
         /// Metoda care afiseaza rezultatul.
         /// </summary>
         /// <param name="v">Vectorul pe care il vom afisa ca rezultat.</param>
-        private static void Afisare_Rezultat(int[] v)
+        private static void Afisare_Rezultat_Egale(int[] v, int z)
+        {
+            Console.WriteLine("Rezultatul este:");
+            int i = 0;
+            // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
+            while (v[i] == 0)
+                i++;
+            // Afisam vectorul.
+            for (; i < v.Length; i++)
+                Console.Write(v[i]);
+            while (z > 0)
+            {
+                Console.Write('0');
+                z--;
+            }
+        }
+
+        private static void Afisare_Rezultat_Inegale(int[] v)
         {
             Console.WriteLine("Rezultatul este:");
             int i = 0;

@@ -83,7 +83,7 @@ namespace Operatii_cu_numere_mari
         /// </summary>
         /// <param name="v">Vectorul in care vom numara valorile de 0 de la final.</param>
         /// <returns></returns>
-        private static int Numarare_Zerouri_Final(int[] v)
+        public static int Numarare_Zerouri_Final(int[] v)
         {
             int i = v.Length - 1, nr = 0;
             for (; i > 0; i--)
