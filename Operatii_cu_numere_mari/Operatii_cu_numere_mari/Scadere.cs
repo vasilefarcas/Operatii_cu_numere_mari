@@ -86,7 +86,6 @@ namespace Operatii_cu_numere_mari
             return c;
         }
 
-
         private static int[] Scadere_Egale(int[] a, int[] b)
         {
             // l reprezinta lungimea numerelor.
