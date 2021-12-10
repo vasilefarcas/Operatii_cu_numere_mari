@@ -36,7 +36,7 @@ namespace Operatii_cu_numere_mari
         /// <param name="a">Primul numar sub forma de vector</param>
         /// <param name="b">Al doilea numar sub forma de vector</param>
         /// <returns></returns>
-        private static int[] Scadere_Inegale(int[] a, int[] b)
+        public static int[] Scadere_Inegale(int[] a, int[] b)
         {
             // l1 respectiv l2 stocheaza lungimile vectorilor de numere.
             // max stocheaza lungimea maxima dintre cele doua siruri.
@@ -46,7 +46,6 @@ namespace Operatii_cu_numere_mari
             // Acesta are lungimea maximului dintre cele doua plus doua pozitii in cazul
             // in care rezultatul o sa necesite asta
             int[] c = new int[Math.Max(l1, l2)];
-            int k;
             // Pornim cu fiecare vector de la final si adaugam in noul vector creat de la final.
             for (i = l1 - 1, j = l2 - 1; i >= 0 && j >= 0; i--, j--, max--)
             {
@@ -86,7 +85,7 @@ namespace Operatii_cu_numere_mari
             return c;
         }
 
-        private static int[] Scadere_Egale(int[] a, int[] b)
+        public static int[] Scadere_Egale(int[] a, int[] b)
         {
             // l reprezinta lungimea numerelor.
             int l = a.Length, i;

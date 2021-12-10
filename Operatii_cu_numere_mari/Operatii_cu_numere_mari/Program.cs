@@ -49,6 +49,9 @@ namespace Operatii_cu_numere_mari
                 case 3:
                     Inmultire.Inmultire_Numere();
                     break;
+                case 5:
+                    Putere.Ridicare_La_Putere_Numere();
+                    break;
                 default:
                     Console.WriteLine(" ");
                     break;

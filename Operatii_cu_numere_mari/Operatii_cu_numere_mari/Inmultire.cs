@@ -20,7 +20,7 @@ namespace Operatii_cu_numere_mari
             // Convertesc sirurile de caractere in tip int
             Adunare.Convertire(ref v, primul);
             Adunare.Convertire(ref a, al_doilea);
-            int z = Numarare_Zerouri_Final(v)+Numarare_Zerouri_Final(a);
+            int z = Numarare_Zerouri_Final(v) + Numarare_Zerouri_Final(a);
             Afisare_Rezultat(Inmultire_Numere(v, a), z);
         }
 
@@ -55,20 +55,27 @@ namespace Operatii_cu_numere_mari
         /// <param name="v">Primul vector care reprezintaa primul numar.</param>
         /// <param name="a">Al doilea vector care reprezintaa al doilea numar.</param>
         /// <returns></returns>
-        private static int[] Inmultire_Numere(int[] v, int[] a)
+        public static int[] Inmultire_Numere(int[] v, int[] a)
         {
             int i, j, k = 0, l1 = v.Length, l2 = a.Length;
-            int[] c = new int[Math.Max(l1, l2) * 2];
+            int[] c = new int[Math.Max(l1, l2) * 2 ];
             for (i = 0; i < l1; i++)
             {
                 for (j = 0; j < l2; j++)
                 {
-                    c[j + k] = c[j + k] + (v[i] * a[j]);
+                    c[j + k + 1] = c[j + k + 1] + (v[i] * a[j]);
                 }
                 k++;
             }
             // Parcurgem din nou vectorul rezultat, iar in cazul in care valoarea este mai mare decat 9 vom adauga
             // pe pozitia urmatoare valoarea pe care "o tinem in minte".
+            Array.Reverse(c);
+            for (i = 0; i < c.Length; i++)
+                if (c[i] > 9)
+                {
+                    c[i + 1] = c[i + 1] + c[i] / 10;
+                    c[i] %= 10;
+                }
             for (i = 0; i < c.Length; i++)
                 if (c[i] > 9)
                 {
