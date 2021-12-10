@@ -36,17 +36,17 @@ namespace Operatii_cu_numere_mari
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
             while (v[i] == 0)
                 i++;
-            if (v[i] < 0)
-                Console.Write("-");
             // Afisam vectorul.
             for (; i < v.Length; i++)
-                Console.Write(Math.Abs(v[i]));
+                Console.Write(v[i]);
             // In cazul in care vreunul din numere are valoarea 0 la final vom afisa cate valori de 0 e nevoie.
+           /*
             while (z != 0)
             {
                 Console.Write("0");
                 z--;
             }
+           */
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Operatii_cu_numere_mari
         public static int[] Inmultire_Numere(int[] v, int[] a)
         {
             int i, j, k = 0, l1 = v.Length, l2 = a.Length;
-            int[] c = new int[Math.Max(l1, l2) * 2 ];
+            int[] c = new int[Math.Max(l1, l2) * 2];
             for (i = 0; i < l1; i++)
             {
                 for (j = 0; j < l2; j++)
