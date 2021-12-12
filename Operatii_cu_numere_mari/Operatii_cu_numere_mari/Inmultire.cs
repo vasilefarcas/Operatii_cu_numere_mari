@@ -20,15 +20,14 @@ namespace Operatii_cu_numere_mari
             // Convertesc sirurile de caractere in tip int
             Adunare.Convertire(ref v, primul);
             Adunare.Convertire(ref a, al_doilea);
-            int z = Numarare_Zerouri_Final(v) + Numarare_Zerouri_Final(a);
-            Afisare_Rezultat(Inmultire_Numere(v, a), z);
+            Afisare_Rezultat(Inmultire_Numere(v, a));
         }
 
         /// <summary>
         /// Metoda care afiseaza rezultatul.
         /// </summary>
         /// <param name="v">Vectorul pe care il vom afisa ca rezultat.</param>
-        private static void Afisare_Rezultat(int[] v, int z)
+        private static void Afisare_Rezultat(int[] v)
         {
             Console.WriteLine("Rezultatul este:");
             int i = 0;
@@ -39,14 +38,7 @@ namespace Operatii_cu_numere_mari
             // Afisam vectorul.
             for (; i < v.Length; i++)
                 Console.Write(v[i]);
-            // In cazul in care vreunul din numere are valoarea 0 la final vom afisa cate valori de 0 e nevoie.
-           /*
-            while (z != 0)
-            {
-                Console.Write("0");
-                z--;
-            }
-           */
+           
         }
 
         /// <summary>
@@ -83,23 +75,6 @@ namespace Operatii_cu_numere_mari
                     c[i] %= 10;
                 }
             return c;
-        }
-
-        /// <summary>
-        /// Metoda care numara cate valori 0 avem la finalul unui vector.
-        /// </summary>
-        /// <param name="v">Vectorul in care vom numara valorile de 0 de la final.</param>
-        /// <returns></returns>
-        public static int Numarare_Zerouri_Final(int[] v)
-        {
-            int i = v.Length - 1, nr = 0;
-            for (; i > 0; i--)
-                if (v[i] == 0)
-                    nr++;
-                else
-                    return nr;
-            return nr;
-
         }
     }
 }

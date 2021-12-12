@@ -56,6 +56,7 @@ namespace Operatii_cu_numere_mari
                         nr++;
                 }
                 i = 0;
+                // aici se verifica daca puterea a ajuns la 0, iar in acest caz programul se va opri.
                 while (v[i] == 0)
                     i++;
                 if (nr == p.Length)
@@ -70,7 +71,7 @@ namespace Operatii_cu_numere_mari
         /// Metoda prin care citim cele doua numere in variabile de tip string.
         /// </summary>
         /// <param name="primul">Primul sir de caractere.</param>
-        /// <param name="al_doilea">Al doilea sir de caractere.</param>
+        /// <param name="al_doilea">Al doilea sir de caractere care reprezinta puterea la care il vom ridica pe cel introdus anterior.</param>
         private static void Citire_Numere(ref string primul, ref string al_doilea)
         {
             Console.Clear();
@@ -80,27 +81,5 @@ namespace Operatii_cu_numere_mari
             al_doilea = Console.ReadLine();
         }
 
-        private static int[] Inmultire_Numere(int[] v, int[] a)
-        {
-            int i, j, k = 0, l1 = v.Length, l2 = a.Length;
-            int[] c = new int[Math.Max(l1, l2) * 2];
-            for (i = 0; i < l1; i++)
-            {
-                for (j = 0; j < l2; j++)
-                {
-                    c[j + k] = c[j + k] + (v[i] * a[j]);
-                }
-                k++;
-            }
-            // Parcurgem din nou vectorul rezultat, iar in cazul in care valoarea este mai mare decat 9 vom adauga
-            // pe pozitia urmatoare valoarea pe care "o tinem in minte".
-            for (i = 0; i < c.Length; i++)
-                if (c[i] > 9)
-                {
-                    c[i + 1] = c[i + 1] + c[i] / 10;
-                    c[i] %= 10;
-                }
-            return c;
-        }
     }
 }

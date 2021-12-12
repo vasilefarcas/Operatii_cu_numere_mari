@@ -25,7 +25,6 @@ namespace Operatii_cu_numere_mari
                 try
                 {
                     varianta = int.Parse(Console.ReadLine());
-                    Console.WriteLine(varianta);
                     Console.WriteLine("Introduceti o valoare dintre cele valide:");
                 }
                 catch (System.FormatException)
@@ -49,9 +48,14 @@ namespace Operatii_cu_numere_mari
                 case 3:
                     Inmultire.Inmultire_Numere();
                     break;
+                case 4:
+                    Impartire.Impartire_Numere();
+                    break;
                 case 5:
                     Putere.Ridicare_La_Putere_Numere();
                     break;
+                case 6:
+                    //Radical.Este_PP();
                 default:
                     Console.WriteLine(" ");
                     break;

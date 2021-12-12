@@ -44,10 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adunare.cs" />
+    <Compile Include="Impartire.cs" />
     <Compile Include="Inmultire.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Putere.cs" />
+    <Compile Include="Radical.cs" />
     <Compile Include="Scadere.cs" />
   </ItemGroup>
   <ItemGroup>
