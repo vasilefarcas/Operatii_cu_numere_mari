@@ -111,11 +111,13 @@ namespace Operatii_cu_numere_mari
             Console.WriteLine("Rezultatul este:");
             int i = 0;
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
-            while (v[i] == 0)
+            while (v[i] == 0 && i < v.Length - 1)
                 i++;
             // Afisam vectorul.
             for (; i < v.Length; i++)
                 Console.Write(v[i]);
         }
+
+
     }
 }

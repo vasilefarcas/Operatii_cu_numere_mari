@@ -32,23 +32,42 @@ namespace Operatii_cu_numere_mari
             while (v[i] == 0)
                 i++;
             Console.WriteLine("Rezultatul este:");
-            for(;i<v.Length;i++)
+            for (; i < v.Length; i++)
                 Console.Write(v[i]);
         }
 
+        /// <summary>
+        /// Metoda in care prin inmultiri repetate vom ridica la putere vetorul v.
+        /// </summary>
+        /// <param name="v">Vectorul pe care il ridicam la putere.</param>
+        /// <param name="init">Valoarea initiala a vectorului pentru a nu ii pierde valoarea initiala.</param>
+        /// <param name="p">Puterea la care vom ridica.</param>
+        /// <returns></returns>
         private static int[] Ridicare_La_Putere(int[] v, int[] init, int[] p)
         {
             bool ok = true;
-            int nr,i;
+            int nr, i;
+            // In cazul in care puterea este 0 vom returna 1.
+            if (p.Length == 1 && p[0] == 0)
+            {
+                int[] r = new int[1];
+                r[0] = 1;
+                return r;
+            }
             p[p.Length - 1]--;
+            int[] d = { 1 };
             while (ok == true)
             {
-                int[] d = { 1 };
+                // Pentru a scadea din p cate 1 de fiecare data cand realizam o inmultire vom utiliza Clasa Scadere.
                 if (p.Length == 1)
                     p = Scadere.Scadere_Egale(p, d);
                 else
                     p = Scadere.Scadere_Inegale(p, d);
-                v=Inmultire.Inmultire_Numere(v, init);
+
+                // Prin intermediul inmultirilor repetate vom ridica la putere. Pentru aceasta vom folosi Clasa Adunare.
+                v = Inmultire.Inmultire_Numere(v, init);
+
+                // aici se verifica daca puterea a ajuns la 0, iar in acest caz programul se va opri.
                 nr = 0;
                 foreach (int item in p)
                 {
@@ -56,8 +75,8 @@ namespace Operatii_cu_numere_mari
                         nr++;
                 }
                 i = 0;
-                // aici se verifica daca puterea a ajuns la 0, iar in acest caz programul se va opri.
-                while (v[i] == 0)
+                // Se numara, iar apoi se elimina valorile de 0 de la inceputul rezultatelor obtinute.
+                while (v[i] == 0 && i < v.Length - 1)
                     i++;
                 if (nr == p.Length)
                     ok = false;

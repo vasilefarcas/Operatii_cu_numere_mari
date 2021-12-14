@@ -55,7 +55,8 @@ namespace Operatii_cu_numere_mari
                     Putere.Ridicare_La_Putere_Numere();
                     break;
                 case 6:
-                    //Radical.Este_PP();
+                    Radical.RadacinaPatrata();
+                    break;
                 default:
                     Console.WriteLine(" ");
                     break;

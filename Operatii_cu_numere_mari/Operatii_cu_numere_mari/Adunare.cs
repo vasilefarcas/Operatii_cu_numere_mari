@@ -15,14 +15,17 @@ namespace Operatii_cu_numere_mari
         {
             // Declaram doua variabile de tip string in care vom salva numerele
             string primul = string.Empty, al_doilea = string.Empty;
-            // Introducem numerele de la tastatura, iar transmiterea citirii
-            // in program se face prin referinta
+
+            // Introducem numerele de la tastatura, iar transmiterea citirii in program se face prin referinta
             Citire_Numere(ref primul, ref al_doilea);
+            
             // Declar vectorii in care voi stoca numerele pe rand
             int[] v = new int[primul.Length], a = new int[al_doilea.Length];
+            
             // Convertesc sirurile de caractere in tip int
             Convertire(ref v, primul);
             Convertire(ref a, al_doilea);
+            
             Afisare_Rezultat(Adunarea_Numerelor(v, a));
         }
 
@@ -64,7 +67,7 @@ namespace Operatii_cu_numere_mari
             Console.WriteLine("Rezultatul este:");
             int i = 0;
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
-            while (v[i] == 0)
+            while (v[i] == 0 && i < v.Length-1)
                 i++;
             // Afisam vectorul.
             for (; i < v.Length; i++)
@@ -77,7 +80,7 @@ namespace Operatii_cu_numere_mari
         /// <param name="a">Primul numar sub forma de vector</param>
         /// <param name="b">Al doilea numar sub forma de vector</param>
         /// <returns></returns>
-        private static int[] Adunarea_Numerelor(int[] a, int[] b)
+        public static int[] Adunarea_Numerelor(int[] a, int[] b)
         {
             // l1 respectiv l2 stocheaza lungimile vectorilor de numere.
             // max stocheaza lungimea maxima dintre cele doua siruri.

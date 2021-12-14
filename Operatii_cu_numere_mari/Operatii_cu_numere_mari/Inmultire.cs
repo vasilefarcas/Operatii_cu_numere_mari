@@ -12,14 +12,18 @@ namespace Operatii_cu_numere_mari
         {
             // Declaram doua variabile de tip string in care vom salva numerele
             string primul = string.Empty, al_doilea = string.Empty;
+
             // Introducem numerele de la tastatura, iar transmiterea citirii
             // in program se face prin referinta
             Adunare.Citire_Numere(ref primul, ref al_doilea);
+            
             // Declar vectorii in care voi stoca numerele pe rand
             int[] v = new int[primul.Length], a = new int[al_doilea.Length];
+            
             // Convertesc sirurile de caractere in tip int
             Adunare.Convertire(ref v, primul);
             Adunare.Convertire(ref a, al_doilea);
+            
             Afisare_Rezultat(Inmultire_Numere(v, a));
         }
 
@@ -33,7 +37,7 @@ namespace Operatii_cu_numere_mari
             int i = 0;
             Array.Reverse(v);
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
-            while (v[i] == 0)
+            while (v[i] == 0 && i < v.Length - 1)
                 i++;
             // Afisam vectorul.
             for (; i < v.Length; i++)
