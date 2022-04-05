@@ -5,3 +5,4 @@ D:\Drive\OneDrive\Documente\GitHub\Facultate\Operatii_cu_numere_mari\Operatii_cu
 D:\Drive\OneDrive\Documente\GitHub\Facultate\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\obj\Debug\Operatii_cu_numere_mari.csproj.CoreCompileInputs.cache
 D:\Drive\OneDrive\Documente\GitHub\Facultate\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\obj\Debug\Operatii_cu_numere_mari.exe
 D:\Drive\OneDrive\Documente\GitHub\Facultate\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\obj\Debug\Operatii_cu_numere_mari.pdb
+D:\Drive\OneDrive\Documente\GitHub\Facultate\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\Operatii_cu_numere_mari\obj\Debug\Operatii_cu_numere_mari.csproj.SuggestedBindingRedirects.cache

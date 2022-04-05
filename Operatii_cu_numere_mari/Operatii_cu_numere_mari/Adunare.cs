@@ -18,14 +18,14 @@ namespace Operatii_cu_numere_mari
 
             // Introducem numerele de la tastatura, iar transmiterea citirii in program se face prin referinta
             Citire_Numere(ref primul, ref al_doilea);
-            
+
             // Declar vectorii in care voi stoca numerele pe rand
             int[] v = new int[primul.Length], a = new int[al_doilea.Length];
-            
+
             // Convertesc sirurile de caractere in tip int
             Convertire(ref v, primul);
             Convertire(ref a, al_doilea);
-            
+
             Afisare_Rezultat(Adunarea_Numerelor(v, a));
         }
 
@@ -50,6 +50,7 @@ namespace Operatii_cu_numere_mari
         /// <param name="b">Variabila de tip string pe care o vom converti in vector de tip int.</param>
         public static void Convertire(ref int[] a, string b)
         {
+            // a = new int[]; 
             int i = 0;
             while (i < b.Length)
             {
@@ -67,7 +68,7 @@ namespace Operatii_cu_numere_mari
             Console.WriteLine("Rezultatul este:");
             int i = 0;
             // Sarim peste valorile de 0 de la inceputul sirului in cazul in care acestea exista.
-            while (v[i] == 0 && i < v.Length-1)
+            while (v[i] == 0 && i < v.Length - 1)
                 i++;
             // Afisam vectorul.
             for (; i < v.Length; i++)
